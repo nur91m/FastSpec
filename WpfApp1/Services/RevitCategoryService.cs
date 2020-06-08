@@ -1,0 +1,321 @@
+﻿using Revit = Autodesk.Revit.DB;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SpecUI.Models;
+
+namespace SpecUI.Services
+{
+    public class RevitCategoryService
+    {
+        #region BuitlInCategories
+        //public static List<string> BuiltInCategories
+        //{
+        //    get
+        //    {
+        //        return new List<string>()
+        //        {
+        //            "OST_AnalyticalNodes",
+        //            "OST_AnalyticSpaces",
+        //            "OST_AnalyticSurfaces",
+        //            "OST_AreaLoads",
+        //            "OST_AreaRein",
+        //            "OST_Assemblies",
+        //            "OST_BeamAnalytical",
+        //            "OST_BraceAnalytical",
+        //            "OST_BuildingPad",
+        //            "OST_CableTray",
+        //            "OST_CableTrayFitting",
+        //            "OST_CableTrayRun",
+        //            "OST_Casework",
+        //            "OST_Ceilings",
+        //            "OST_ColumnAnalytical",
+        //            "OST_Columns",
+        //            "OST_CommunicationDevices",
+        //            "OST_Conduit",
+        //            "OST_ConduitFitting",
+        //            "OST_ConduitRun",
+        //            "OST_Cornices",
+        //            "OST_Coupler",
+        //            "OST_CurtainWallMullions",
+        //            "OST_CurtainWallPanels",
+        //            "OST_CurtaSystem",
+        //            "OST_DataDevices",
+        //            "OST_DetailComponents",
+        //            "OST_Doors",
+        //            "OST_DuctAccessory",
+        //            "OST_DuctCurves",
+        //            "OST_DuctFitting",
+        //            "OST_DuctInsulations",
+        //            "OST_DuctLinings",
+        //            "OST_DuctSystem",
+        //            "OST_DuctTerminal",
+        //            "OST_EdgeSlab",
+        //            "OST_ElectricalCircuit",
+        //            "OST_ElectricalEquipment",
+        //            "OST_ElectricalFixtures",
+        //            "OST_Entourage",
+        //            "OST_FabricAreas",
+        //            "OST_FabricationContainment",
+        //            "OST_FabricationDuctwork",
+        //            "OST_FabricationHangers",
+        //            "OST_FabricationPipework",
+        //            "OST_FabricReinforcement",
+        //            "OST_FabricReinforcementWire",
+        //            "OST_Fascia",
+        //            "OST_FireAlarmDevices",
+        //            "OST_FlexDuctCurves",
+        //            "OST_FlexPipeCurves",
+        //            "OST_FloorAnalytical",
+        //            "OST_Floors",
+        //            "OST_Furniture",
+        //            "OST_FurnitureSystems",
+        //            "OST_GenericModel",
+        //            "OST_GridChains",
+        //            "OST_Grids",
+        //            "OST_Gutter",
+        //            "OST_HVAC_Zones",
+        //            "OST_InternalAreaLoads",
+        //            "OST_InternalLineLoads",
+        //            "OST_InternalLoads",
+        //            "OST_InternalPointLoads",
+        //            "OST_IsolatedFoundationAnalytical",
+        //            "OST_Levels",
+        //            "OST_LightingDevices",
+        //            "OST_LightingFixtures",
+        //            "OST_LineLoads",
+        //            "OST_LinksAnalytical",
+        //            "OST_Loads",
+        //            "OST_Mass",
+        //            "OST_MassExteriorWall",
+        //            "OST_MassFloor",
+        //            "OST_MassGlazing",
+        //            "OST_MassInteriorWall",
+        //            "OST_MassOpening",
+        //            "OST_MassRoof",
+        //            "OST_MassSkylights",
+        //            "OST_MassZone",
+        //            "OST_MechanicalEquipment",
+        //            "OST_MEPSpaces",
+        //            "OST_NurseCallDevices",
+        //            "OST_Parking",
+        //            "OST_Parts",
+        //            "OST_PathRein",
+        //            "OST_PipeAccessory",
+        //            "OST_PipeCurves",
+        //            "OST_PipeFitting",
+        //            "OST_PipeInsulations",
+        //            "OST_PipingSystem",
+        //            "OST_PlaceHolderDucts",
+        //            "OST_PlaceHolderPipes",
+        //            "OST_Planting",
+        //            "OST_PlumbingFixtures",
+        //            "OST_PointLoads",
+        //            "OST_RailingHandRail",
+        //            "OST_RailingSupport",
+        //            "OST_RailingTopRail",
+        //            "OST_Ramps",
+        //            "OST_Rebar",
+        //            "OST_Roofs",
+        //            "OST_RoofSoffit",
+        //            "OST_Rooms",
+        //            "OST_SecurityDevices",
+        //            "OST_Site",
+        //            "OST_SiteProperty",
+        //            "OST_SitePropertyLineSegment",
+        //            "OST_SpecialityEquipment",
+        //            "OST_Sprinklers",
+        //            "OST_Stairs",
+        //            "OST_StairsLandings",
+        //            "OST_StairsRailing",
+        //            "OST_StairsRuns",
+        //            "OST_StairsStringerCarriage",
+        //            "OST_StairsSupports",
+        //            "OST_StructConnections",
+        //            "OST_StructuralColumns",
+        //            "OST_StructuralFoundation",
+        //            "OST_StructuralFraming",
+        //            "OST_StructuralFramingSystem",
+        //            "OST_StructuralStiffener",
+        //            "OST_StructuralTruss",
+        //            "OST_SwitchSystem",
+        //            "OST_TelephoneDevices",
+        //            "OST_Topography",
+        //            "OST_WallAnalytical",
+        //            "OST_WallFoundationAnalytical",
+        //            "OST_Walls",
+        //            "OST_Windows"
+        //        };
+        //    }
+        //}
+    
+    public static List<Revit.BuiltInCategory> BuiltInCategories
+    {
+        get
+        {
+            return new List<Revit.BuiltInCategory>()
+                {
+                    Revit.BuiltInCategory.OST_AnalyticalNodes,
+                    Revit.BuiltInCategory.OST_AnalyticSpaces,
+                    Revit.BuiltInCategory.OST_AnalyticSurfaces,
+                    Revit.BuiltInCategory.OST_AreaLoads,
+                    Revit.BuiltInCategory.OST_AreaRein,
+                    Revit.BuiltInCategory.OST_Assemblies,
+                    Revit.BuiltInCategory.OST_BeamAnalytical,
+                    Revit.BuiltInCategory.OST_BraceAnalytical,
+                    Revit.BuiltInCategory.OST_BuildingPad,
+                    Revit.BuiltInCategory.OST_CableTray,
+                    Revit.BuiltInCategory.OST_CableTrayFitting,
+                    Revit.BuiltInCategory.OST_CableTrayRun,
+                    Revit.BuiltInCategory.OST_Casework,
+                    Revit.BuiltInCategory.OST_Ceilings,
+                    Revit.BuiltInCategory.OST_ColumnAnalytical,
+                    Revit.BuiltInCategory.OST_Columns,
+                    Revit.BuiltInCategory.OST_CommunicationDevices,
+                    Revit.BuiltInCategory.OST_Conduit,
+                    Revit.BuiltInCategory.OST_ConduitFitting,
+                    Revit.BuiltInCategory.OST_ConduitRun,
+                    Revit.BuiltInCategory.OST_Cornices,
+                    Revit.BuiltInCategory.OST_Coupler,
+                    Revit.BuiltInCategory.OST_CurtainWallMullions,
+                    Revit.BuiltInCategory.OST_CurtainWallPanels,
+                    Revit.BuiltInCategory.OST_CurtaSystem,
+                    Revit.BuiltInCategory.OST_DataDevices,
+                    Revit.BuiltInCategory.OST_DetailComponents,
+                    Revit.BuiltInCategory.OST_Doors,
+                    Revit.BuiltInCategory.OST_DuctAccessory,
+                    Revit.BuiltInCategory.OST_DuctCurves,
+                    Revit.BuiltInCategory.OST_DuctFitting,
+                    Revit.BuiltInCategory.OST_DuctInsulations,
+                    Revit.BuiltInCategory.OST_DuctLinings,
+                    Revit.BuiltInCategory.OST_DuctSystem,
+                    Revit.BuiltInCategory.OST_DuctTerminal,
+                    Revit.BuiltInCategory.OST_EdgeSlab,
+                    Revit.BuiltInCategory.OST_ElectricalCircuit,
+                    Revit.BuiltInCategory.OST_ElectricalEquipment,
+                    Revit.BuiltInCategory.OST_ElectricalFixtures,
+                    Revit.BuiltInCategory.OST_Entourage,
+                    Revit.BuiltInCategory.OST_FabricAreas,
+                    Revit.BuiltInCategory.OST_FabricationContainment,
+                    Revit.BuiltInCategory.OST_FabricationDuctwork,
+                    Revit.BuiltInCategory.OST_FabricationHangers,
+                    Revit.BuiltInCategory.OST_FabricationPipework,
+                    Revit.BuiltInCategory.OST_FabricReinforcement,
+                    Revit.BuiltInCategory.OST_FabricReinforcementWire,
+                    Revit.BuiltInCategory.OST_Fascia,
+                    Revit.BuiltInCategory.OST_FireAlarmDevices,
+                    Revit.BuiltInCategory.OST_FlexDuctCurves,
+                    Revit.BuiltInCategory.OST_FlexPipeCurves,
+                    Revit.BuiltInCategory.OST_FloorAnalytical,
+                    Revit.BuiltInCategory.OST_Floors,
+                    Revit.BuiltInCategory.OST_Furniture,
+                    Revit.BuiltInCategory.OST_FurnitureSystems,
+                    Revit.BuiltInCategory.OST_GenericModel,
+                    Revit.BuiltInCategory.OST_GridChains,
+                    Revit.BuiltInCategory.OST_Grids,
+                    Revit.BuiltInCategory.OST_Gutter,
+                    Revit.BuiltInCategory.OST_HVAC_Zones,
+                    Revit.BuiltInCategory.OST_InternalAreaLoads,
+                    Revit.BuiltInCategory.OST_InternalLineLoads,
+                    Revit.BuiltInCategory.OST_InternalLoads,
+                    Revit.BuiltInCategory.OST_InternalPointLoads,
+                    Revit.BuiltInCategory.OST_IsolatedFoundationAnalytical,
+                    Revit.BuiltInCategory.OST_Levels,
+                    Revit.BuiltInCategory.OST_LightingDevices,
+                    Revit.BuiltInCategory.OST_LightingFixtures,
+                    Revit.BuiltInCategory.OST_LineLoads,
+                    Revit.BuiltInCategory.OST_LinksAnalytical,
+                    Revit.BuiltInCategory.OST_Loads,
+                    Revit.BuiltInCategory.OST_Mass,
+                    Revit.BuiltInCategory.OST_MassExteriorWall,
+                    Revit.BuiltInCategory.OST_MassFloor,
+                    Revit.BuiltInCategory.OST_MassGlazing,
+                    Revit.BuiltInCategory.OST_MassInteriorWall,
+                    Revit.BuiltInCategory.OST_MassOpening,
+                    Revit.BuiltInCategory.OST_MassRoof,
+                    Revit.BuiltInCategory.OST_MassSkylights,
+                    Revit.BuiltInCategory.OST_MassZone,
+                    Revit.BuiltInCategory.OST_MechanicalEquipment,
+                    Revit.BuiltInCategory.OST_MEPSpaces,
+                    Revit.BuiltInCategory.OST_NurseCallDevices,
+                    Revit.BuiltInCategory.OST_Parking,
+                    Revit.BuiltInCategory.OST_Parts,
+                    Revit.BuiltInCategory.OST_PathRein,
+                    Revit.BuiltInCategory.OST_PipeAccessory,
+                    Revit.BuiltInCategory.OST_PipeCurves,
+                    Revit.BuiltInCategory.OST_PipeFitting,
+                    Revit.BuiltInCategory.OST_PipeInsulations,
+                    Revit.BuiltInCategory.OST_PipingSystem,
+                    Revit.BuiltInCategory.OST_PlaceHolderDucts,
+                    Revit.BuiltInCategory.OST_PlaceHolderPipes,
+                    Revit.BuiltInCategory.OST_Planting,
+                    Revit.BuiltInCategory.OST_PlumbingFixtures,
+                    Revit.BuiltInCategory.OST_PointLoads,
+                    Revit.BuiltInCategory.OST_RailingHandRail,
+                    Revit.BuiltInCategory.OST_RailingSupport,
+                    Revit.BuiltInCategory.OST_RailingTopRail,
+                    Revit.BuiltInCategory.OST_Ramps,
+                    Revit.BuiltInCategory.OST_Rebar,
+                    Revit.BuiltInCategory.OST_Roofs,
+                    Revit.BuiltInCategory.OST_RoofSoffit,
+                    Revit.BuiltInCategory.OST_Rooms,
+                    Revit.BuiltInCategory.OST_SecurityDevices,
+                    Revit.BuiltInCategory.OST_Site,
+                    Revit.BuiltInCategory.OST_SiteProperty,
+                    Revit.BuiltInCategory.OST_SitePropertyLineSegment,
+                    Revit.BuiltInCategory.OST_SpecialityEquipment,
+                    Revit.BuiltInCategory.OST_Sprinklers,
+                    Revit.BuiltInCategory.OST_Stairs,
+                    Revit.BuiltInCategory.OST_StairsLandings,
+                    Revit.BuiltInCategory.OST_StairsRailing,
+                    Revit.BuiltInCategory.OST_StairsRuns,
+                    Revit.BuiltInCategory.OST_StairsStringerCarriage,
+                    Revit.BuiltInCategory.OST_StairsSupports,
+                    Revit.BuiltInCategory.OST_StructConnections,
+                    Revit.BuiltInCategory.OST_StructuralColumns,
+                    Revit.BuiltInCategory.OST_StructuralFoundation,
+                    Revit.BuiltInCategory.OST_StructuralFraming,
+                    Revit.BuiltInCategory.OST_StructuralFramingSystem,
+                    Revit.BuiltInCategory.OST_StructuralStiffener,
+                    Revit.BuiltInCategory.OST_StructuralTruss,
+                    Revit.BuiltInCategory.OST_SwitchSystem,
+                    Revit.BuiltInCategory.OST_TelephoneDevices,
+                    Revit.BuiltInCategory.OST_Topography,
+                    Revit.BuiltInCategory.OST_WallAnalytical,
+                    Revit.BuiltInCategory.OST_WallFoundationAnalytical,
+                    Revit.BuiltInCategory.OST_Walls,
+                    Revit.BuiltInCategory.OST_Windows
+                };
+        }
+    }
+    #endregion
+
+    public static ObservableCollection<Category> GetCategoryList()
+        {
+            var doc = RevitApplicationService.ActiveDocument;
+            var _categoryList = new List<Category>();
+            try
+            {
+                //foreach (var item in BuiltInCategories)
+                //{                                     
+                //    _categoryList.Add(new Category(item, item));
+                //}
+
+                foreach (Revit.BuiltInCategory item in BuiltInCategories)
+                {
+                    var category = doc.Settings.Categories.get_Item(item);
+                    _categoryList.Add(new Category(category.Name, item.ToString()));
+                }
+            }
+            catch
+            {
+
+            }
+
+            return new ObservableCollection<Category>(_categoryList);
+        }
+    }
+}

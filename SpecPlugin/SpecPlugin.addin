@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command SpecPlugin</Text>
+    <Description>Some description for SpecPlugin</Description>
+    <Assembly>SpecPlugin.dll</Assembly>
+    <FullClassName>SpecPlugin.Command</FullClassName>
+    <ClientId>880d946f-4844-4d56-b62f-ccb6df4cdf14</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application SpecPlugin</Name>
+    <Assembly>SpecPlugin.dll</Assembly>
+    <FullClassName>SpecPlugin.App</FullClassName>
+    <ClientId>f094236c-265e-4290-9aa0-fe8077501f98</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
